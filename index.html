@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velvet & Co. | Boutique & E-commerce</title>
-    <meta name="description" content="Moda sostenible y colecciones exclusivas. Compra online con envío en 24/48h.">
+    <title>Velvet & Co. | Boutique & E-commerce Avanzado</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,27 +14,32 @@
             --text: #111111;
             --text-muted: #666666;
             --accent: #b89774;
+            --accent-dark: #967655;
             --border: #e5e5df;
+            --sale-red: #d32f2f;
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
         
-        /* TOP BAR */
         .top-bar { background: var(--text); color: #fff; text-align: center; padding: 0.6rem; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* HEADER */
         header { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text); text-transform: uppercase; }
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text); text-transform: uppercase; cursor: pointer; }
         nav { display: flex; gap: 2.5rem; }
-        nav a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        nav a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; cursor: pointer; }
         nav a:hover { color: var(--accent); }
         .header-actions { display: flex; gap: 1.5rem; align-items: center; }
-        .cart-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; position: relative; display: flex; align-items: center; gap: 0.4rem; font-weight: 500; }
-        .cart-badge { background: var(--accent); color: #fff; width: 18px; height: 18px; border-radius: 50%; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+        .cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: background 0.3s; }
+        .cart-btn:hover { background: var(--border); }
+        .cart-badge { background: var(--accent); color: #fff; width: 20px; height: 20px; border-radius: 50%; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; }
+
+        /* VISTAS (SPA Switcher) */
+        .view-section { display: none; }
+        .view-section.active { display: block; }
 
         /* HERO */
         .hero { height: 85vh; background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80') center/cover; display: flex; align-items: center; padding: 0 10%; position: relative; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.25); }
+        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
         .hero-content { position: relative; z-index: 1; color: #fff; max-width: 600px; }
         .hero-tag { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
@@ -45,171 +49,345 @@
         .btn-light { background: #fff; color: var(--text); }
         .btn-light:hover { background: var(--accent); color: #fff; }
 
-        /* FEATURES BAR */
-        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 3rem 5%; background: var(--bg-soft); border-bottom: 1px solid var(--border); text-align: center; }
-        .feature-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
-        .feature-item p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* PRODUCTS SECTION */
-        section { padding: 6rem 5%; max-width: 1300px; margin: 0 auto; }
+        /* SECTIONS */
+        section { padding: 5rem 5%; max-width: 1300px; margin: 0 auto; }
         .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
         .section-header h2 { font-size: 2.2rem; font-weight: 700; }
         .section-header p { color: var(--text-muted); font-size: 0.95rem; }
 
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-        .product-card { background: var(--bg); cursor: pointer; group: true; }
+        .product-card { background: var(--bg); cursor: pointer; transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-4px); }
         .product-img-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #eee; border-radius: 8px; margin-bottom: 1rem; }
         .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .product-card:hover .product-img { transform: scale(1.05); }
         .product-tag { position: absolute; top: 12px; left: 12px; background: #fff; padding: 0.3rem 0.8rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; letter-spacing: 0.5px; }
+        .product-tag.sale { background: var(--sale-red); color: #fff; }
         
         .product-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
         .product-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; }
+        .price-wrap { display: flex; gap: 0.6rem; align-items: center; }
         .price { font-weight: 700; font-size: 1.05rem; }
+        .price.old { text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; font-weight: 400; }
+        .price.discount { color: var(--sale-red); }
         .add-cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .add-cart-btn:hover { background: var(--text); color: #fff; border-color: var(--text); }
 
+        /* MODAL DE PRODUCTO (Tallas y Colores) */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 1rem; }
+        .modal-overlay.open { display: flex; }
+        .modal-card { background: #fff; border-radius: 12px; max-width: 800px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; animation: scaleUp 0.3s ease; }
+        @keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
+        .modal-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+        .close-modal { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; z-index: 10; }
+        
+        .option-group { margin: 1rem 0; }
+        .option-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+        .options-row { display: flex; gap: 0.5rem; }
+        .opt-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
+        .opt-btn.selected { border-color: var(--text); background: var(--text); color: #fff; }
+
+        /* VISTA DE CHECKOUT / CARRITO SEPARADA */
+        .checkout-container { max-width: 900px; margin: 4rem auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 3rem; }
+        .checkout-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; margin-top: 2rem; }
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+        .summary-box { background: var(--bg-soft); padding: 2rem; border-radius: 8px; border: 1px solid var(--border); }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.95rem; }
+        .summary-row.total { font-weight: 700; font-size: 1.2rem; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; }
+        .coupon-box { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
+        .coupon-box input { flex: 1; padding: 0.7rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; }
+
         /* BANNER */
-        .banner { background: var(--bg-soft); padding: 6rem 5%; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .banner h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .banner { background: var(--bg-soft); padding: 5rem 5%; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .banner h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
         .banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
 
         /* FOOTER */
-        footer { padding: 5rem 5% 2rem; background: var(--text); color: #fff; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1300px; margin: 0 auto 4rem; }
+        footer { padding: 4rem 5% 2rem; background: var(--text); color: #fff; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1300px; margin: 0 auto 3rem; }
         .footer-col h5 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--accent); }
-        .footer-col p, .footer-col a { color: #aaa; font-size: 0.85rem; margin-bottom: 0.8rem; display: block; text-decoration: none; transition: color 0.3s; }
+        .footer-col p, .footer-col a { color: #aaa; font-size: 0.85rem; margin-bottom: 0.8rem; display: block; text-decoration: none; transition: color 0.3s; cursor: pointer; }
         .footer-col a:hover { color: #fff; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #777; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
 
-        /* TOAST NOTIFICATION */
         .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--text); color: #fff; padding: 1rem 2rem; border-radius: 6px; font-size: 0.85rem; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
             nav { display: none; }
-            .features { grid-template-columns: 1fr; gap: 1.5rem; }
+            .modal-card, .checkout-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">✨ Envío gratuito en pedidos superiores a 50€ | Código: INNOVA20</div>
+    <div class="top-bar">✨ Envío gratuito en pedidos superiores a 50€ | Usa el código: <strong>INNOVA20</strong> para un 20% de descuento</div>
 
     <header>
-        <a href="#" class="logo">Velvet & Co.</a>
+        <div class="logo" onclick="switchView('shop')">Velvet & Co.</div>
         <nav>
-            <a href="#productos">Colección</a>
-            <a href="#novedades">Novedades</a>
-            <a href="#sostenibilidad">Sostenibilidad</a>
+            <a onclick="switchView('shop')">Colección</a>
+            <a onclick="scrollToSection('seccion-ofertas')">Ofertas ⚡</a>
+            <a onclick="scrollToSection('seccion-zapatos')">Zapatos</a>
         </nav>
         <div class="header-actions">
-            <button class="cart-btn" onclick="showCartMsg()">
-                🛒 Carrito <span class="cart-badge" id="cartCount">0</span>
+            <button class="cart-btn" onclick="switchView('checkout')">
+                🛒 Ver Carrito <span class="cart-badge" id="cartCount">0</span>
             </button>
         </div>
     </header>
 
-    <div class="hero">
-        <div class="hero-content">
-            <span class="hero-tag">Colección Otoño / Invierno</span>
-            <h1>Elegancia atemporal para el día a día</h1>
-            <p>Diseños limpios, tejidos naturales y confección artesanal local. Viste con propósito y estilo.</p>
-            <a href="#productos" class="btn btn-light">Explorar Colección</a>
+    <!-- VISTA TIENDA PRINCIPAL -->
+    <div id="view-shop" class="view-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">Colección Otoño / Invierno</span>
+                <h1>Elegancia atemporal para el día a día</h1>
+                <p>Diseños limpios, tejidos naturales y confección artesanal local. Viste con propósito y estilo.</p>
+                <button class="btn btn-light" onclick="scrollToSection('productos')">Explorar Colección</button>
+            </div>
+        </div>
+
+        <section id="productos">
+            <div class="section-header">
+                <div>
+                    <h2>Colección Textil</h2>
+                    <p>Prendas versátiles diseñadas para durar temporada tras temporada.</p>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" onclick="openProductModal('Blazer Oversize Lino', 89, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80', '100% Lino natural orgánico')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag">Nuevo</span>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Blazer" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Blazer Oversize Lino</h3>
+                        <p>100% Lino natural orgánico</p>
+                        <div class="product-footer">
+                            <span class="price">89,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Blazer Oversize Lino', 89, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80', '100% Lino')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Impermeable efecto piel de melocotón')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag">Top Ventas</span>
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Gabardina" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gabardina Midi Clásica</h3>
+                        <p>Impermeable efecto melocotón</p>
+                        <div class="product-footer">
+                            <span class="price">129,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Gabardina clásica')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Corte fluido con tirantes finos')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag">Tendencia</span>
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Vestido" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Vestido Midi Satinado</h3>
+                        <p>Corte fluido con tirantes finos</p>
+                        <div class="product-footer">
+                            <span class="price">75,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Vestido Midi')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE ZAPATOS -->
+        <section id="seccion-zapatos" style="background: var(--bg-soft);">
+            <div class="section-header">
+                <div>
+                    <h2>Calzado Exclusivo</h2>
+                    <p>Piel de primera calidad fabricada en talleres artesanales.</p>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" onclick="openProductModal('Botines Piel Chelsea', 110, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80', 'Piel vacuna 100% con elástico lateral')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag">Nuevo</span>
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80" alt="Botines" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Botines Piel Chelsea</h3>
+                        <p>Piel vacuna 100%</p>
+                        <div class="product-footer">
+                            <span class="price">110,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Botines Piel Chelsea', 110, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80', 'Botines Piel')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openProductModal('Mocasines Minimalistas', 85, 'https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80', 'Acabado brillo con suela track ligera')">
+                    <div class="product-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80" alt="Mocasines" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mocasines Minimalistas</h3>
+                        <p>Acabado brillo con suela track</p>
+                        <div class="product-footer">
+                            <span class="price">85,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Mocasines Minimalistas', 85, 'https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80', 'Mocasines')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE OFERTAS / REBAJAS -->
+        <section id="seccion-ofertas">
+            <div class="section-header">
+                <div>
+                    <h2>Ofertas Especiales ⚡</h2>
+                    <p>Descuentos exclusivos por tiempo limitado en piezas seleccionadas.</p>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" onclick="openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80', 'Rebajas de temporada - Antes 65€')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag sale">-30%</span>
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80" alt="Pantalón" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pantalón Tailored Pinzas</h3>
+                        <p>Tiro alto y corte recto</p>
+                        <div class="product-footer">
+                            <div class="price-wrap">
+                                <span class="price discount">45,00 €</span>
+                                <span class="price old">65,00 €</span>
+                            </div>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80', 'Pantalón Rebajado')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', 'Mezcla de lana y cashmere - Antes 90€')">
+                    <div class="product-img-wrap">
+                        <span class="product-tag sale">-40%</span>
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="Jersey" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Jersey Punto Cashmere</h3>
+                        <p>Mezcla lana y cashmere</p>
+                        <div class="product-footer">
+                            <div class="price-wrap">
+                                <span class="price discount">55,00 €</span>
+                                <span class="price old">90,00 €</span>
+                            </div>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', 'Jersey Cashmere')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="banner">
+            <h2>¿Tienes un comercio local y quieres vender online?</h2>
+            <p>Esta tienda online ha sido desarrollada por InnovaRed. Pasarela de pago integrada, control de stock y diseño ultrarrápido desde 500€.</p>
+            <a href="https://innovaed.vercel.app/" class="btn" target="_blank">Contactar con la Agencia</a>
         </div>
     </div>
 
-    <div class="features">
-        <div class="feature-item">
-            <h4>📦 Envío Rápido</h4>
-            <p>Entrega garantizada en 24/48 horas</p>
-        </div>
-        <div class="feature-item">
-            <h4>♻️ Moda Sostenible</h4>
-            <p>Tejidos 100% orgánicos certificados</p>
-        </div>
-        <div class="feature-item">
-            <h4>🔒 Pago Seguro</h4>
-            <p>Stripe, Bizum y Tarjeta de crédito</p>
+    <!-- VISTA DE CHECKOUT / CARRITO APARTE -->
+    <div id="view-checkout" class="view-section">
+        <div class="checkout-container">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">Tu Cesta de Compra</h2>
+            <p style="color: var(--text-muted);">Revisa tus artículos seleccionados antes de proceder al pago seguro.</p>
+            
+            <div class="checkout-grid">
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Artículos en el carrito</h3>
+                    <div id="cartItemsList">
+                        <p style="color: var(--text-muted); padding: 2rem 0; text-align: center;">Tu carrito está vacío. ¡Vuelve a la tienda y añade productos!</p>
+                    </div>
+                    <button class="btn" style="margin-top: 1.5rem; background: transparent; color: var(--text); border: 1px solid var(--border);" onclick="switchView('shop')">← Continuar comprando</button>
+                </div>
+
+                <div>
+                    <div class="summary-box">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Resumen del Pedido</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="summarySubtotal">0,00 €</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Descuento aplicado</span>
+                            <span id="summaryDiscount" style="color: var(--sale-red);">-0,00 €</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Envío</span>
+                            <span>Gratis</span>
+                        </div>
+                        
+                        <div class="coupon-box">
+                            <input type="text" id="couponInput" placeholder="Código de descuento (ej. INNOVA20)">
+                            <button class="add-cart-btn" onclick="applyCoupon()">Aplicar</button>
+                        </div>
+
+                        <div class="summary-row total">
+                            <span>Total a pagar</span>
+                            <span id="summaryTotal">0,00 €</span>
+                        </div>
+
+                        <button class="btn" style="width: 100%; margin-top: 1.5rem; text-align: center;" onclick="simulateCheckout()">Pagar con Stripe / Bizum</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <section id="productos">
-        <div class="section-header">
-            <div>
-                <h2>Nuestros Destacados</h2>
-                <p>Prendas versátiles diseñadas para durar temporada tras temporada.</p>
-            </div>
-        </div>
+    <!-- MODAL DE SELECCIÓN DE PRODUCTO -->
+    <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModalDirect()">×</button>
+            <img id="modalImg" src="" alt="Producto" class="modal-img">
+            <div class="modal-body">
+                <div>
+                    <span id="modalCategory" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700;">Moda Velvet</span>
+                    <h2 id="modalTitle" style="font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0 1rem 0;">Título Producto</h2>
+                    <p id="modalDesc" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;"></p>
+                    
+                    <div class="option-group">
+                        <label>Selecciona Color:</label>
+                        <div class="options-row" id="colorOptions">
+                            <button class="opt-btn selected" onclick="selectOption(this, 'color')">Negro</button>
+                            <button class="opt-btn" onclick="selectOption(this, 'color')">Beige</button>
+                            <button class="opt-btn" onclick="selectOption(this, 'color')">Terracota</button>
+                        </div>
+                    </div>
 
-        <div class="products-grid">
-            <div class="product-card" onclick="addToCart('Blazer Oversize Lino')">
-                <div class="product-img-wrap">
-                    <span class="product-tag">Nuevo</span>
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Blazer" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Blazer Oversize Lino</h3>
-                    <p>100% Lino natural orgánico</p>
-                    <div class="product-footer">
-                        <span class="price">89,00 €</span>
-                        <button class="add-cart-btn" onclick="event.stopPropagation(); addToCart('Blazer Oversize Lino')">Añadir</button>
+                    <div class="option-group">
+                        <label>Selecciona Talla:</label>
+                        <div class="options-row" id="sizeOptions">
+                            <button class="opt-btn" onclick="selectOption(this, 'size')">XS</button>
+                            <button class="opt-btn selected" onclick="selectOption(this, 'size')">S</button>
+                            <button class="opt-btn" onclick="selectOption(this, 'size')">M</button>
+                            <button class="opt-btn" onclick="selectOption(this, 'size')">L</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="product-card" onclick="addToCart('Gabardina Clásica')">
-                <div class="product-img-wrap">
-                    <span class="product-tag">Top Ventas</span>
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Gabardina" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Gabardina Midi Clásica</h3>
-                    <p>Impermeable efecto piel de melocotón</p>
-                    <div class="product-footer">
-                        <span class="price">129,00 €</span>
-                        <button class="add-cart-btn" onclick="event.stopPropagation(); addToCart('Gabardina Clásica')">Añadir</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" onclick="addToCart('Vestido Midi Satinado')">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Vestido" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Vestido Midi Satinado</h3>
-                    <p>Corte fluido con tirantes finos</p>
-                    <div class="product-footer">
-                        <span class="price">75,00 €</span>
-                        <button class="add-cart-btn" onclick="event.stopPropagation(); addToCart('Vestido Midi Satinado')">Añadir</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" onclick="addToCart('Pantalón Tailored')">
-                <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80" alt="Pantalón" class="product-img">
-                </div>
-                <div class="product-info">
-                    <h3>Pantalón Tailored Pinzas</h3>
-                    <p>Tiro alto y corte recto impecable</p>
-                    <div class="product-footer">
-                        <span class="price">65,00 €</span>
-                        <button class="add-cart-btn" onclick="event.stopPropagation(); addToCart('Pantalón Tailored')">Añadir</button>
-                    </div>
+                <div style="border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+                    <span id="modalPrice" style="font-size: 1.5rem; font-weight: 700;">0,00 €</span>
+                    <button class="btn" onclick="confirmAddToCart()">Añadir a la Cesta</button>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="banner">
-        <h2>¿Tienes un comercio local y quieres vender online?</h2>
-        <p>Esta tienda online ha sido desarrollada por InnovaRed. Pasarela de pago integrada, control de stock y diseño ultrarrápido desde 500€.</p>
-        <a href="https://innovaed.vercel.app/" class="btn" target="_blank">Contactar con la Agencia</a>
     </div>
 
     <footer>
@@ -220,15 +398,15 @@
             </div>
             <div class="footer-col">
                 <h5>Ayuda</h5>
-                <a href="#">Envíos y Devoluciones</a>
-                <a href="#">Guía de Tallas</a>
-                <a href="#">Preguntas Frecuentes</a>
+                <a>Envíos y Devoluciones</a>
+                <a>Guía de Tallas</a>
+                <a>Preguntas Frecuentes</a>
             </div>
             <div class="footer-col">
                 <h5>Legal</h5>
-                <a href="#">Aviso Legal</a>
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Cookies</a>
+                <a>Aviso Legal</a>
+                <a>Política de Privacidad</a>
+                <a>Cookies</a>
             </div>
             <div class="footer-col">
                 <h5>Contacto</h5>
@@ -242,27 +420,148 @@
         </div>
     </footer>
 
-    <div class="toast" id="toastMsg">¡Producto añadido al carrito con éxito!</div>
+    <div class="toast" id="toastMsg">¡Producto añadido al carrito!</div>
 
     <script>
-        let cartCount = 0;
-        function addToCart(productName) {
-            cartCount++;
-            document.getElementById('cartCount').innerText = cartCount;
+        let cart = [];
+        let currentProduct = {};
+        let discountMultiplier = 1;
+
+        function switchView(viewName) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            if(viewName === 'shop') {
+                document.getElementById('view-shop').classList.add('active');
+                window.scrollTo(0,0);
+            } else if(viewName === 'checkout') {
+                document.getElementById('view-checkout').classList.add('active');
+                renderCart();
+                window.scrollTo(0,0);
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            switchView('shop');
+            setTimeout(() => {
+                const el = document.getElementById(sectionId);
+                if(el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function openProductModal(title, price, img, desc) {
+            currentProduct = { title, price, img, desc, color: 'Negro', size: 'S' };
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = price.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('modalImg').src = img;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('productModal').classList.add('open');
+        }
+
+        function closeModalDirect() {
+            document.getElementById('productModal').classList.remove('open');
+        }
+
+        function closeModal(e) {
+            if(e.target.id === 'productModal') closeModalDirect();
+        }
+
+        function selectOption(btn, type) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            if(type === 'color') currentProduct.color = btn.innerText;
+            if(type === 'size') currentProduct.size = btn.innerText;
+        }
+
+        function confirmAddToCart() {
+            cart.push({ ...currentProduct });
+            updateCartCount();
+            closeModalDirect();
+            showToast(`✨ Añadido: ${currentProduct.title} (${currentProduct.color}, Talla ${currentProduct.size})`);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').innerText = cart.length;
+        }
+
+        function renderCart() {
+            const listEl = document.getElementById('cartItemsList');
+            if(cart.length === 0) {
+                listEl.innerHTML = '<p style="color: var(--text-muted); padding: 2rem 0; text-align: center;">Tu carrito está vacío. ¡Vuelve a la tienda y añade productos!</p>';
+                document.getElementById('summarySubtotal').innerText = '0,00 €';
+                document.getElementById('summaryDiscount').innerText = '-0,00 €';
+                document.getElementById('summaryTotal').innerText = '0,00 €';
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                subtotal += item.price;
+                html += `
+                    <div class="cart-item-row">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <img src="${item.img}" style="width: 50px; height: 60px; object-fit: cover; border-radius: 4px;">
+                            <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 600;">${item.title}</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Color: ${item.color} | Talla: ${item.size}</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-weight: 700; display: block; margin-bottom: 0.3rem;">${item.price.toFixed(2).replace('.', ',')} €</span>
+                            <button onclick="removeItem(${index})" style="background: none; border: none; color: var(--sale-red); font-size: 0.75rem; cursor: pointer;">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+            updateTotals(subtotal);
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            renderCart();
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('couponInput').value.trim().toUpperCase();
+            if(code === 'INNOVA20') {
+                discountMultiplier = 0.8;
+                showToast('🎉 ¡Cupón aplicado con éxito! 20% de descuento');
+            } else {
+                alert('Código de descuento no válido. Prueba con: INNOVA20');
+                discountMultiplier = 1;
+            }
+            renderCart();
+        }
+
+        function updateTotals(subtotal) {
+            const discount = subtotal * (1 - discountMultiplier);
+            const total = subtotal - discount;
+            document.getElementById('summarySubtotal').innerText = subtotal.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('summaryDiscount').innerText = '-' + discount.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('summaryTotal').innerText = total.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        function simulateCheckout() {
+            if(cart.length === 0) {
+                alert('Añade algún producto antes de pagar.');
+                return;
+            }
+            alert('🚀 ¡Simulación de pago completada con éxito! Esta es la pasarela que integrarán tus clientes con Stripe y Bizum.');
+            cart = [];
+            discountMultiplier = 1;
+            updateCartCount();
+            switchView('shop');
+        }
+
+        function showToast(msg) {
             const toast = document.getElementById('toastMsg');
-            toast.innerText = `✨ "${productName}" añadido al carrito`;
+            toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 2500);
-        }
-
-        function showCartMsg() {
-            if(cartCount === 0) {
-                alert('Tu carrito está vacío. ¡Haz clic en "Añadir" en cualquier producto de prueba!');
-            } else {
-                alert(`Tienes ${cartCount} producto(s) en el carrito simulado. ¡Listo para conectar con Stripe o Bizum!`);
-            }
+            }, 3000);
         }
     </script>
 </body>
