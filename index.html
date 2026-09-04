@@ -3,406 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velvet & Co. | Boutique & E-commerce Avanzado</title>
+    <title>Velvet & Co. | Flagship Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #ffffff;
-            --bg-soft: #f8f8f6;
-            --text: #111111;
-            --text-muted: #666666;
-            --accent: #b89774;
-            --border: #e5e5df;
-            --sale-red: #d32f2f;
+            --bg-alt: #f4f4f2;
+            --text: #1a1a1a;
+            --text-muted: #767676;
+            --border: #e0e0e0;
+            --accent: #111111;
+            --sale: #c94a4a;
         }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        
-        .top-bar { background: var(--text); color: #fff; text-align: center; padding: 0.6rem; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
 
-        header { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text); text-transform: uppercase; cursor: pointer; }
-        nav { display: flex; gap: 2.5rem; }
-        nav a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; cursor: pointer; }
-        nav a:hover { color: var(--accent); }
-        .header-actions { display: flex; gap: 1.5rem; align-items: center; }
-        .cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; transition: background 0.3s; }
-        .cart-btn:hover { background: var(--border); }
-        .cart-badge { background: var(--accent); color: #fff; width: 20px; height: 20px; border-radius: 50%; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; }
+        /* HEADER ESTILO ZARA */
+        header { position: sticky; top: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1.2rem 4%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 600; letter-spacing: 4px; text-decoration: none; color: var(--text); text-transform: uppercase; cursor: pointer; }
+        
+        nav { display: flex; gap: 2rem; }
+        nav a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--text-muted); border-bottom: 1px solid var(--text); padding-bottom: 2px; }
+
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .search-box { display: flex; align-items: center; border-bottom: 1px solid var(--text); padding-bottom: 2px; gap: 0.5rem; }
+        .search-box input { border: none; outline: none; font-family: inherit; font-size: 0.8rem; width: 120px; background: transparent; }
+        
+        .cart-trigger { background: none; border: none; font-family: inherit; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; }
 
         .view-section { display: none; }
         .view-section.active { display: block; }
 
-        .hero { height: 75vh; background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80') center/cover; display: flex; align-items: center; padding: 0 10%; position: relative; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.25); }
-        .hero-content { position: relative; z-index: 1; color: #fff; max-width: 600px; }
-        .hero-tag { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.2rem; }
-        .hero p { font-size: 1.05rem; margin-bottom: 2rem; opacity: 0.9; }
-        .btn { padding: 0.8rem 2rem; background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; border-radius: 4px; display: inline-block; transition: background 0.3s, transform 0.2s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
-        .btn:hover { background: var(--accent); transform: translateY(-2px); }
-        .btn-light { background: #fff; color: var(--text); }
-        .btn-light:hover { background: var(--accent); color: #fff; }
+        /* HERO EDITORIAL */
+        .hero-editorial { height: 85vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; background: var(--bg-alt); }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; }
+        .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 0 8%; }
+        .hero-text span { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+        .hero-text h1 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.5px; }
+        .hero-text p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 400px; }
+        .btn-editorial { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.3s; text-align: center; }
+        .btn-editorial:hover { opacity: 0.85; }
 
-        section { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
-        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
-        .section-header h2 { font-size: 2rem; font-weight: 700; }
-        .section-header p { color: var(--text-muted); font-size: 0.9rem; }
+        /* FILTROS DE CATEGORÍA */
+        .filter-bar { display: flex; justify-content: center; gap: 2rem; padding: 2.5rem 4%; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+        .filter-btn { background: none; border: none; font-family: inherit; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: color 0.3s; font-weight: 500; }
+        .filter-btn.active, .filter-btn:hover { color: var(--text); font-weight: 600; }
 
-        /* REJILLA MÁS COMPACTA (4 columnas en desktop) */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.8rem; }
-        .product-card { background: var(--bg); cursor: pointer; transition: transform 0.3s; }
-        .product-card:hover { transform: translateY(-4px); }
-        .product-img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #f0f0f0; border-radius: 6px; margin-bottom: 0.8rem; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-img { transform: scale(1.04); }
-        .product-tag { position: absolute; top: 10px; left: 10px; background: #fff; padding: 0.25rem 0.6rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; border-radius: 3px; letter-spacing: 0.5px; }
-        .product-tag.sale { background: var(--sale-red); color: #fff; }
+        /* CATALOGO DE PRODUCTOS (GRID TIPO ZARA) */
+        .catalog-container { max-width: 1500px; margin: 0 auto; padding: 0 4% 6rem 4%; }
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         
-        .product-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
-        .product-info p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.6rem; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; }
-        .price-wrap { display: flex; gap: 0.5rem; align-items: center; }
-        .price { font-weight: 700; font-size: 0.95rem; }
-        .price.old { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; font-weight: 400; }
-        .price.discount { color: var(--sale-red); }
-        .add-cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .add-cart-btn:hover { background: var(--text); color: #fff; border-color: var(--text); }
+        .product-card { cursor: pointer; group: true; }
+        .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: var(--bg-alt); overflow: hidden; margin-bottom: 0.8rem; }
+        .product-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; }
+        .product-img.hover-img { opacity: 0; }
+        .product-card:hover .product-img.main-img { opacity: 0; }
+        .product-card:hover .product-img.hover-img { opacity: 1; }
+        
+        .product-badge { position: absolute; top: 12px; left: 12px; font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: #fff; padding: 3px 8px; z-index: 2; }
+        .product-badge.sale { background: var(--sale); color: #fff; }
 
-        /* MODAL */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 1rem; }
+        .product-details { display: flex; justify-content: space-between; align-items: flex-start; }
+        .product-title { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+        .product-category { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+        .product-price { font-size: 0.85rem; font-weight: 600; }
+        .product-price.old { text-decoration: line-through; color: var(--text-muted); margin-right: 6px; font-weight: 400; }
+        .product-price.sale { color: var(--sale); }
+
+        /* MODAL DE PRODUCTO PREMIUM */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 2rem; }
         .modal-overlay.open { display: flex; }
-        .modal-card { background: #fff; border-radius: 12px; max-width: 750px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; animation: scaleUp 0.3s ease; }
-        @keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 380px; }
-        .modal-body { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
-        .close-modal { position: absolute; top: 12px; right: 15px; background: none; border: none; font-size: 1.4rem; cursor: pointer; z-index: 10; }
-        
-        .option-group { margin: 0.8rem 0; }
-        .option-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem; letter-spacing: 0.5px; }
-        .options-row { display: flex; gap: 0.4rem; }
-        .opt-btn { padding: 0.4rem 0.8rem; border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
-        .opt-btn.selected { border-color: var(--text); background: var(--text); color: #fff; }
+        .modal-card { background: #fff; width: 100%; max-width: 900px; display: grid; grid-template-columns: 1.1fr 0.9fr; position: relative; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; }
+        .modal-content { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+        .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.2rem; cursor: pointer; z-index: 10; }
 
-        /* CHECKOUT */
-        .checkout-container { max-width: 900px; margin: 4rem auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 3rem; }
-        .checkout-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; margin-top: 2rem; }
-        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
-        .summary-box { background: var(--bg-soft); padding: 2rem; border-radius: 8px; border: 1px solid var(--border); }
-        .summary-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.95rem; }
-        .summary-row.total { font-weight: 700; font-size: 1.2rem; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; }
-        .coupon-box { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
-        .coupon-box input { flex: 1; padding: 0.7rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; }
+        .option-group { margin: 1.2rem 0; }
+        .option-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        .options-row { display: flex; gap: 0.5rem; }
+        .opt-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); background: #fff; font-family: inherit; font-size: 0.75rem; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
+        .opt-btn.selected { border-color: var(--accent); background: var(--accent); color: #fff; }
 
-        .banner { background: var(--bg-soft); padding: 4rem 5%; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .banner h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.8rem; }
-        .banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
+        /* VISTA CHECKOUT / CARRITO */
+        .checkout-view { max-width: 1000px; margin: 4rem auto; padding: 0 4%; }
+        .checkout-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; margin-top: 2rem; }
+        .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+        .summary-card { background: var(--bg-alt); padding: 2.5rem; }
+        .summary-line { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .summary-line.total { font-weight: 600; font-size: 1.1rem; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem; }
+        .coupon-input-group { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
+        .coupon-input-group input { flex: 1; padding: 0.7rem; border: 1px solid var(--border); outline: none; font-family: inherit; font-size: 0.8rem; }
 
-        footer { padding: 4rem 5% 2rem; background: var(--text); color: #fff; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto 3rem; }
-        .footer-col h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.2rem; color: var(--accent); }
-        .footer-col p, .footer-col a { color: #aaa; font-size: 0.85rem; margin-bottom: 0.7rem; display: block; text-decoration: none; cursor: pointer; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #777; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        /* FOOTER EDITORIAL */
+        footer { border-top: 1px solid var(--border); padding: 5rem 4% 2rem; background: var(--bg); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1500px; margin: 0 auto 4rem; }
+        .footer-col h5 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600; }
+        .footer-col a, .footer-col p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem; display: block; text-decoration: none; cursor: pointer; }
+        .footer-col a:hover { color: var(--text); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: 1500px; margin: 0 auto; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 2rem; }
 
-        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--text); color: #fff; padding: 1rem 2rem; border-radius: 6px; font-size: 0.85rem; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; pointer-events: none; }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: #fff; padding: 0.9rem 2rem; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; z-index: 9999; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
             nav { display: none; }
-            .modal-card, .checkout-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-editorial, .products-grid, .modal-card, .checkout-grid, .footer-grid { grid-template-columns: 1fr; }
+            .hero-editorial { height: auto; padding: 4rem 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">✨ Envío gratuito en pedidos superiores a 50€ | Usa el código: <strong>INNOVA20</strong> para un 20% de descuento</div>
-
     <header>
         <div class="logo" onclick="switchView('shop')">Velvet & Co.</div>
         <nav>
-            <a onclick="switchView('shop')">Colección</a>
-            <a onclick="scrollToSection('seccion-zapatos')">Zapatos</a>
-            <a onclick="scrollToSection('seccion-ofertas')">Ofertas ⚡</a>
+            <a onclick="filterCategory('all')" id="nav-all" class="active">Todo</a>
+            <a onclick="filterCategory('ropa')" id="nav-ropa">Ropa</a>
+            <a onclick="filterCategory('zapatos')" id="nav-zapatos">Zapatos</a>
+            <a onclick="filterCategory('ofertas')" id="nav-ofertas" style="color: var(--sale);">Special Prices</a>
         </nav>
-        <div class="header-actions">
-            <button class="cart-btn" onclick="switchView('checkout')">
-                🛒 Carrito <span class="cart-badge" id="cartCount">0</span>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar..." onkeyup="searchProducts(this.value)">
+                <span>🔍</span>
+            </div>
+            <button class="cart-trigger" onclick="switchView('checkout')">
+                Bolsa (<span id="cartCount">0</span>)
             </button>
         </div>
     </header>
 
+    <!-- VISTA PRINCIPAL TIENDA -->
     <div id="view-shop" class="view-section active">
-        <div class="hero">
-            <div class="hero-content">
-                <span class="hero-tag">Colección Otoño / Invierno</span>
-                <h1>Elegancia atemporal para el día a día</h1>
-                <p>Diseños limpios, tejidos naturales y confección artesanal local.</p>
-                <button class="btn btn-light" onclick="scrollToSection('productos')">Explorar Colección</button>
+        <div class="hero-editorial">
+            <div class="hero-text">
+                <span>Nueva Colección 2026</span>
+                <h1>Elegancia Estructural</h1>
+                <p>Siluetas depuradas, tejidos nobles y una paleta cromática inspirada en la arquitectura moderna.</p>
+                <button class="btn-editorial" onclick="window.scrollTo({top: 600, behavior: 'smooth'})">Descubrir Editorial</button>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Editorial" class="hero-image">
             </div>
         </div>
 
-        <section id="productos">
-            <div class="section-header">
-                <div>
-                    <h2>Colección Textil</h2>
-                    <p>Prendas versátiles para cualquier ocasión.</p>
-                </div>
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="filter-btn" onclick="filterCategory('ropa')">Ropa & Abrigos</button>
+            <button class="filter-btn" onclick="filterCategory('zapatos')">Calzado</button>
+            <button class="filter-btn" onclick="filterCategory('ofertas')">Ofertas</button>
+        </div>
+
+        <div class="catalog-container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Inyectado por JS -->
             </div>
+        </div>
 
-            <div class="products-grid">
-                <div class="product-card" onclick="openProductModal('Blazer Oversize Lino', 89, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80', '100% Lino natural orgánico')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag">Nuevo</span>
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Blazer" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Blazer Oversize Lino</h3>
-                        <p>100% Lino natural</p>
-                        <div class="product-footer">
-                            <span class="price">89,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Blazer Oversize Lino', 89, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80', '100% Lino')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Impermeable efecto piel de melocotón')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag">Top Ventas</span>
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Gabardina" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Gabardina Midi Clásica</h3>
-                        <p>Impermeable elegante</p>
-                        <div class="product-footer">
-                            <span class="price">129,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Gabardina')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Corte fluido con tirantes finos')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag">Tendencia</span>
-                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Vestido" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Vestido Midi Satinado</h3>
-                        <p>Corte fluido elegante</p>
-                        <div class="product-footer">
-                            <span class="price">75,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Vestido')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Camisa Oxford Algodón', 59, 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80', 'Algodón orgánico respirable')">
-                    <div class="product-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80" alt="Camisa" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Camisa Oxford Algodón</h3>
-                        <p>Algodón orgánico</p>
-                        <div class="product-footer">
-                            <span class="price">59,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Camisa Oxford Algodón', 59, 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80', 'Camisa')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="seccion-zapatos" style="background: var(--bg-soft);">
-            <div class="section-header">
-                <div>
-                    <h2>Calzado Exclusivo</h2>
-                    <p>Piel de primera calidad fabricada en talleres artesanales.</p>
-                </div>
-            </div>
-
-            <div class="products-grid">
-                <div class="product-card" onclick="openProductModal('Botines Piel Chelsea', 110, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80', 'Piel vacuna 100% con elástico lateral')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag">Nuevo</span>
-                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80" alt="Botines" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Botines Piel Chelsea</h3>
-                        <p>Piel vacuna 100%</p>
-                        <div class="product-footer">
-                            <span class="price">110,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Botines Piel Chelsea', 110, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80', 'Botines Piel')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Mocasines Minimalistas', 85, 'https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80', 'Acabado brillo con suela track ligera')">
-                    <div class="product-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80" alt="Mocasines" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Mocasines Minimalistas</h3>
-                        <p>Acabado brillo</p>
-                        <div class="product-footer">
-                            <span class="price">85,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Mocasines Minimalistas', 85, 'https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80', 'Mocasines')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Sandalias Tiras Piel', 65, 'https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80', 'Diseño minimalista para verano')">
-                    <div class="product-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80" alt="Sandalias" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Sandalias Tiras Piel</h3>
-                        <p>Diseño minimalista</p>
-                        <div class="product-footer">
-                            <span class="price">65,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Sandalias Tiras Piel', 65, 'https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80', 'Sandalias')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="seccion-ofertas">
-            <div class="section-header">
-                <div>
-                    <h2>Ofertas Especiales ⚡</h2>
-                    <p>Descuentos exclusivos por tiempo limitado.</p>
-                </div>
-            </div>
-
-            <div class="products-grid">
-                <div class="product-card" onclick="openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80', 'Rebajas de temporada - Antes 65€')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag sale">-30%</span>
-                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80" alt="Pantalón" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Pantalón Tailored Pinzas</h3>
-                        <p>Tiro alto y corte recto</p>
-                        <div class="product-footer">
-                            <div class="price-wrap">
-                                <span class="price discount">45,00 €</span>
-                                <span class="price old">65,00 €</span>
-                            </div>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80', 'Pantalón')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" onclick="openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80', 'Mezcla de lana y cashmere - Antes 90€')">
-                    <div class="product-img-wrap">
-                        <span class="product-tag sale">-40%</span>
-                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80" alt="Jersey" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h3>Jersey Punto Cashmere</h3>
-                        <p>Mezcla lana y cashmere</p>
-                        <div class="product-footer">
-                            <div class="price-wrap">
-                                <span class="price discount">55,00 €</span>
-                                <span class="price old">90,00 €</span>
-                            </div>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80', 'Jersey')">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="banner">
-            <h2>¿Tienes un comercio local y quieres vender online?</h2>
-            <p>Esta tienda online ha sido desarrollada por InnovaRed. Pasarela de pago integrada, control de stock y diseño ultrarrápido desde 500€.</p>
-            <a href="https://innovaed.vercel.app/" class="btn" target="_blank">Contactar con la Agencia</a>
+        <div style="background: var(--bg-alt); padding: 5rem 4%; text-align: center; border-top: 1px solid var(--border);">
+            <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 1rem;">¿Tienes un comercio local?</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 500px; margin: 0 auto 2rem;">Lleva tu tienda física al siguiente nivel con una plataforma de e-commerce ultrarrápida desarrollada por InnovaRed.</p>
+            <a href="https://innovaed.vercel.app/" class="btn-editorial" target="_blank">Contactar con la Agencia</a>
         </div>
     </div>
 
+    <!-- VISTA CHECKOUT / BOLSA -->
     <div id="view-checkout" class="view-section">
-        <div class="checkout-container">
-            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">Tu Cesta de Compra</h2>
-            <p style="color: var(--text-muted);">Revisa tus artículos seleccionados antes de proceder al pago seguro.</p>
-            
+        <div class="checkout-view">
+            <h2 style="font-size: 1.8rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 0.5rem;">Cesta de la Compra</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Tus artículos seleccionados para envío o recogida.</p>
+
             <div class="checkout-grid">
                 <div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Artículos en el carrito</h3>
-                    <div id="cartItemsList">
-                        <p style="color: var(--text-muted); padding: 2rem 0; text-align: center;">Tu carrito está vacío. ¡Vuelve a la tienda y añade productos!</p>
+                    <div id="cartItemsContainer">
+                        <p style="color: var(--text-muted); padding: 3rem 0; text-align: center; font-size: 0.85rem;">Tu cesta está vacía.</p>
                     </div>
-                    <button class="btn" style="margin-top: 1.5rem; background: transparent; color: var(--text); border: 1px solid var(--border);" onclick="switchView('shop')">← Continuar comprando</button>
+                    <button class="btn-editorial" style="background: transparent; color: var(--text); border: 1px solid var(--text); margin-top: 2rem;" onclick="switchView('shop')">← Seguir comprando</button>
                 </div>
 
                 <div>
-                    <div class="summary-box">
-                        <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Resumen del Pedido</h3>
-                        <div class="summary-row">
+                    <div class="summary-card">
+                        <h3 style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600;">Resumen del Pedido</h3>
+                        <div class="summary-line">
                             <span>Subtotal</span>
-                            <span id="summarySubtotal">0,00 €</span>
+                            <span id="subtotalText">0,00 €</span>
                         </div>
-                        <div class="summary-row">
-                            <span>Descuento aplicado</span>
-                            <span id="summaryDiscount" style="color: var(--sale-red);">-0,00 €</span>
+                        <div class="summary-line">
+                            <span>Descuento</span>
+                            <span id="discountText" style="color: var(--sale);">-0,00 €</span>
                         </div>
-                        <div class="summary-row">
+                        <div class="summary-line">
                             <span>Envío</span>
                             <span>Gratis</span>
                         </div>
-                        
-                        <div class="coupon-box">
-                            <input type="text" id="couponInput" placeholder="Código de descuento (ej. INNOVA20)">
-                            <button class="add-cart-btn" onclick="applyCoupon()">Aplicar</button>
+
+                        <div class="coupon-input-group">
+                            <input type="text" id="couponInput" placeholder="Código (ej. INNOVA20)">
+                            <button class="btn-editorial" style="padding: 0.7rem 1rem;" onclick="applyCoupon()">Aplicar</button>
                         </div>
 
-                        <div class="summary-row total">
-                            <span>Total a pagar</span>
-                            <span id="summaryTotal">0,00 €</span>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span id="totalText">0,00 €</span>
                         </div>
 
-                        <button class="btn" style="width: 100%; margin-top: 1.5rem; text-align: center;" onclick="simulateCheckout()">Pagar con Stripe / Bizum</button>
+                        <button class="btn-editorial" style="width: 100%; margin-top: 1.5rem;" onclick="simulateCheckout()">Tramitar Pedido Seguro</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- MODAL DE PRODUCTO -->
     <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="close-modal" onclick="closeModalDirect()">×</button>
-            <img id="modalImg" src="" alt="Producto" class="modal-img">
-            <div class="modal-body">
+            <button class="close-modal" onclick="closeModalDirect()">✕</button>
+            <img id="modalImg" src="" alt="Detalle" class="modal-img">
+            <div class="modal-content">
                 <div>
-                    <span id="modalCategory" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700;">Moda Velvet</span>
-                    <h2 id="modalTitle" style="font-size: 1.6rem; font-weight: 700; margin: 0.4rem 0 0.8rem 0;">Título Producto</h2>
-                    <p id="modalDesc" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;"></p>
-                    
+                    <span id="modalCategory" style="font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">Categoría</span>
+                    <h2 id="modalTitle" style="font-size: 1.4rem; font-weight: 400; letter-spacing: 0.5px; margin: 0.5rem 0 1rem 0;">Título</h2>
+                    <p id="modalPrice" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">0,00 €</p>
+                    <p id="modalDesc" style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1.5rem; line-height: 1.6;"></p>
+
                     <div class="option-group">
-                        <label>Selecciona Color:</label>
-                        <div class="options-row" id="colorOptions">
-                            <button class="opt-btn selected" onclick="selectOption(this, 'color')">Negro</button>
-                            <button class="opt-btn" onclick="selectOption(this, 'color')">Beige</button>
-                            <button class="opt-btn" onclick="selectOption(this, 'color')">Terracota</button>
+                        <span class="option-label">Color</span>
+                        <div class="options-row" id="colorRow">
+                            <button class="opt-btn selected" onclick="selectOpt(this, 'color')">Negro</button>
+                            <button class="opt-btn" onclick="selectOpt(this, 'color')">Crudo</button>
                         </div>
                     </div>
 
                     <div class="option-group">
-                        <label>Selecciona Talla:</label>
-                        <div class="options-row" id="sizeOptions">
-                            <button class="opt-btn" onclick="selectOption(this, 'size')">XS</button>
-                            <button class="opt-btn selected" onclick="selectOption(this, 'size')">S</button>
-                            <button class="opt-btn" onclick="selectOption(this, 'size')">M</button>
-                            <button class="opt-btn" onclick="selectOption(this, 'size')">L</button>
+                        <span class="option-label">Talla</span>
+                        <div class="options-row" id="sizeRow">
+                            <button class="opt-btn" onclick="selectOpt(this, 'size')">S</button>
+                            <button class="opt-btn selected" onclick="selectOpt(this, 'size')">M</button>
+                            <button class="opt-btn" onclick="selectOpt(this, 'size')">L</button>
                         </div>
                     </div>
                 </div>
 
-                <div style="border-top: 1px solid var(--border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
-                    <span id="modalPrice" style="font-size: 1.3rem; font-weight: 700;">0,00 €</span>
-                    <button class="btn" onclick="confirmAddToCart()">Añadir a la Cesta</button>
-                </div>
+                <button class="btn-editorial" style="width: 100%; margin-top: 2rem;" onclick="addToCartFromModal()">Añadir a la Cesta</button>
             </div>
         </div>
     </div>
@@ -410,66 +256,117 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h5 style="color:#fff;">Velvet & Co.</h5>
-                <p>Moda femenina contemporánea creada con conciencia y diseño depurado. Hecho en España.</p>
+                <h5>Velvet & Co.</h5>
+                <p>Moda contemporánea y calzado de autor. Fabricación nacional con estándares de alta costura.</p>
             </div>
             <div class="footer-col">
                 <h5>Ayuda</h5>
-                <a>Envíos y Devoluciones</a>
-                <a>Guía de Tallas</a>
-                <a>Preguntas Frecuentes</a>
+                <a>Envíos y plazos</a>
+                <a>Devoluciones</a>
+                <a>Opciones de pago</a>
+            </div>
+            <div class="footer-col">
+                <h5>Empresa</h5>
+                <a>Quiénes somos</a>
+                <a>Oficinas</a>
+                <a>Sostenibilidad</a>
             </div>
             <div class="footer-col">
                 <h5>Legal</h5>
-                <a>Aviso Legal</a>
-                <a>Política de Privacidad</a>
+                <a>Privacidad</a>
+                <a>Términos de compra</a>
                 <a>Cookies</a>
-            </div>
-            <div class="footer-col">
-                <h5>Contacto</h5>
-                <p>📍 Paseo de Gracia 88, Barcelona</p>
-                <p>✉️ hola@velvetco.es</p>
             </div>
         </div>
         <div class="footer-bottom">
             <span>© 2026 Velvet & Co. Todos los derechos reservados.</span>
-            <span>Diseño e infraestructura por <strong style="color:#fff;">InnovaRed</strong></span>
+            <span>Desarrollado por <strong>InnovaRed</strong></span>
         </div>
     </footer>
 
-    <div class="toast" id="toastMsg">¡Producto añadido al carrito!</div>
+    <div class="toast" id="toastMsg">Artículo añadido a la cesta</div>
 
     <script>
+        const products = [
+            { id: 1, title: "Blazer Oversize Lino", category: "ropa", type: "ropa", price: 89, oldPrice: null, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", desc: "Blazer estructurada confeccionada en 100% lino orgánico europeo. Solapas de muesca y bolsillos de vivo." },
+            { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
+            { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
+            { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
+            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
+            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
+            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
+            { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
+        ];
+
         let cart = [];
-        let currentProduct = {};
+        let activeFilter = 'all';
+        let currentModalProduct = null;
         let discountMultiplier = 1;
 
-        function switchView(viewName) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            if(viewName === 'shop') {
-                document.getElementById('view-shop').classList.add('active');
-                window.scrollTo(0,0);
-            } else if(viewName === 'checkout') {
-                document.getElementById('view-checkout').classList.add('active');
-                renderCart();
-                window.scrollTo(0,0);
+        function renderProducts(filter = 'all', searchQuery = '') {
+            activeFilter = filter;
+            const grid = document.getElementById('productsGrid');
+            let filtered = products.filter(p => {
+                if (filter === 'all') return true;
+                if (filter === 'ropa') return p.type === 'ropa' && p.category !== 'ofertas';
+                if (filter === 'zapatos') return p.type === 'zapatos';
+                if (filter === 'ofertas') return p.category === 'ofertas';
+                return true;
+            });
+
+            if(searchQuery) {
+                filtered = filtered.filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
             }
+
+            if(filtered.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">No se han encontrado artículos.</p>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card" onclick="openModal(${p.id})">
+                    <div class="product-img-box">
+                        ${p.oldPrice ? '<span class="product-badge sale">Special Price</span>' : (p.id === 1 ? '<span class="product-badge">New</span>' : '')}
+                        <img src="${p.img}" alt="${p.title}" class="product-img main-img">
+                        <img src="${p.hoverImg}" alt="${p.title}" class="product-img hover-img">
+                    </div>
+                    <div class="product-details">
+                        <div>
+                            <div class="product-category">${p.category === 'ofertas' ? 'Oferta' : p.type}</div>
+                            <h3 class="product-title">${p.title}</h3>
+                        </div>
+                        <div class="product-price ${p.oldPrice ? 'sale' : ''}">
+                            ${p.oldPrice ? `<span class="product-price old">${p.oldPrice},00 €</span>` : ''}
+                            ${p.price},00 €
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function scrollToSection(sectionId) {
-            switchView('shop');
-            setTimeout(() => {
-                const el = document.getElementById(sectionId);
-                if(el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+        function filterCategory(cat) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            
+            if(cat === 'all') document.getElementById('nav-all').classList.add('active');
+            if(cat === 'ropa') document.getElementById('nav-ropa').classList.add('active');
+            if(cat === 'zapatos') document.getElementById('nav-zapatos').classList.add('active');
+            if(cat === 'ofertas') document.getElementById('nav-ofertas').classList.add('active');
+
+            renderProducts(cat, document.getElementById('searchInput').value);
         }
 
-        function openProductModal(title, price, img, desc) {
-            currentProduct = { title, price, img, desc, color: 'Negro', size: 'S' };
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalPrice').innerText = price.toFixed(2).replace('.', ',') + ' €';
-            document.getElementById('modalImg').src = img;
-            document.getElementById('modalDesc').innerText = desc;
+        function searchProducts(query) {
+            renderProducts(activeFilter, query);
+        }
+
+        function openModal(id) {
+            currentModalProduct = products.find(p => p.id === id);
+            document.getElementById('modalImg').src = currentModalProduct.img;
+            document.getElementById('modalTitle').innerText = currentModalProduct.title;
+            document.getElementById('modalPrice').innerText = currentModalProduct.price + ",00 €";
+            document.getElementById('modalDesc').innerText = currentModalProduct.desc;
+            document.getElementById('modalCategory').innerText = currentModalProduct.type.toUpperCase();
             document.getElementById('productModal').classList.add('open');
         }
 
@@ -481,60 +378,71 @@
             if(e.target.id === 'productModal') closeModalDirect();
         }
 
-        function selectOption(btn, type) {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+        function selectOpt(btn, type) {
+            btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
-            if(type === 'color') currentProduct.color = btn.innerText;
-            if(type === 'size') currentProduct.size = btn.innerText;
         }
 
-        function confirmAddToCart() {
-            cart.push({ ...currentProduct });
+        function addToCartFromModal() {
+            const color = document.querySelector('#colorRow .opt-btn.selected').innerText;
+            const size = document.querySelector('#sizeRow .opt-btn.selected').innerText;
+            
+            cart.push({ ...currentModalProduct, color, size });
             updateCartCount();
             closeModalDirect();
-            showToast(`✨ Añadido: ${currentProduct.title} (${currentProduct.color}, Talla ${currentProduct.size})`);
+            showToast(`Añadido a la cesta: ${currentModalProduct.title}`);
         }
 
         function updateCartCount() {
             document.getElementById('cartCount').innerText = cart.length;
         }
 
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            if(view === 'shop') {
+                document.getElementById('view-shop').classList.add('active');
+                window.scrollTo(0,0);
+            } else if(view === 'checkout') {
+                document.getElementById('view-checkout').classList.add('active');
+                renderCart();
+                window.scrollTo(0,0);
+            }
+        }
+
         function renderCart() {
-            const listEl = document.getElementById('cartItemsList');
+            const container = document.getElementById('cartItemsContainer');
             if(cart.length === 0) {
-                listEl.innerHTML = '<p style="color: var(--text-muted); padding: 2rem 0; text-align: center;">Tu carrito está vacío. ¡Vuelve a la tienda y añade productos!</p>';
-                document.getElementById('summarySubtotal').innerText = '0,00 €';
-                document.getElementById('summaryDiscount').innerText = '-0,00 €';
-                document.getElementById('summaryTotal').innerText = '0,00 €';
+                container.innerHTML = '<p style="color: var(--text-muted); padding: 3rem 0; text-align: center; font-size: 0.85rem;">Tu cesta está vacía.</p>';
+                document.getElementById('subtotalText').innerText = '0,00 €';
+                document.getElementById('discountText').innerText = '-0,00 €';
+                document.getElementById('totalText').innerText = '0,00 €';
                 return;
             }
 
-            let html = '';
             let subtotal = 0;
-            cart.forEach((item, index) => {
+            container.innerHTML = cart.map((item, index) => {
                 subtotal += item.price;
-                html += `
-                    <div class="cart-item-row">
+                return `
+                    <div class="cart-row">
                         <div style="display: flex; gap: 1rem; align-items: center;">
-                            <img src="${item.img}" style="width: 50px; height: 60px; object-fit: cover; border-radius: 4px;">
+                            <img src="${item.img}" style="width: 60px; height: 75px; object-fit: cover;">
                             <div>
-                                <h4 style="font-size: 0.95rem; font-weight: 600;">${item.title}</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted);">Color: ${item.color} | Talla: ${item.size}</p>
+                                <h4 style="font-size: 0.85rem; font-weight: 500; margin-bottom: 0.2rem;">${item.title}</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Color: ${item.color} | Talla: ${item.size}</p>
                             </div>
                         </div>
                         <div style="text-align: right;">
-                            <span style="font-weight: 700; display: block; margin-bottom: 0.3rem;">${item.price.toFixed(2).replace('.', ',')} €</span>
-                            <button onclick="removeItem(${index})" style="background: none; border: none; color: var(--sale-red); font-size: 0.75rem; cursor: pointer;">Eliminar</button>
+                            <span style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.3rem;">${item.price},00 €</span>
+                            <button onclick="removeFromCart(${index})" style="background: none; border: none; font-size: 0.7rem; color: var(--sale); cursor: pointer; letter-spacing: 0.5px;">Eliminar</button>
                         </div>
                     </div>
                 `;
-            });
-            listEl.innerHTML = html;
-            updateTotals(subtotal);
+            }).join('');
+
+            updateCartTotals(subtotal);
         }
 
-        function removeItem(index) {
+        function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartCount();
             renderCart();
@@ -544,28 +452,28 @@
             const code = document.getElementById('couponInput').value.trim().toUpperCase();
             if(code === 'INNOVA20') {
                 discountMultiplier = 0.8;
-                showToast('🎉 ¡Cupón aplicado con éxito! 20% de descuento');
+                showToast('Cupón aplicado: 20% de descuento');
             } else {
-                alert('Código de descuento no válido. Prueba con: INNOVA20');
+                alert('Código no válido. Prueba con: INNOVA20');
                 discountMultiplier = 1;
             }
             renderCart();
         }
 
-        function updateTotals(subtotal) {
+        function updateCartTotals(subtotal) {
             const discount = subtotal * (1 - discountMultiplier);
             const total = subtotal - discount;
-            document.getElementById('summarySubtotal').innerText = subtotal.toFixed(2).replace('.', ',') + ' €';
-            document.getElementById('summaryDiscount').innerText = '-' + discount.toFixed(2).replace('.', ',') + ' €';
-            document.getElementById('summaryTotal').innerText = total.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('subtotalText').innerText = subtotal.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('discountText').innerText = '-' + discount.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('totalText').innerText = total.toFixed(2).replace('.', ',') + ' €';
         }
 
         function simulateCheckout() {
             if(cart.length === 0) {
-                alert('Añade algún producto antes de pagar.');
+                alert('Añade algún artículo antes de tramitar el pedido.');
                 return;
             }
-            alert('🚀 ¡Simulación de pago completada con éxito! Esta es la pasarela que integrarán tus clientes con Stripe y Bizum.');
+            alert('🚀 ¡Pedido simulado correctamente! Pasarela de pago conectada con éxito.');
             cart = [];
             discountMultiplier = 1;
             updateCartCount();
@@ -573,13 +481,14 @@
         }
 
         function showToast(msg) {
-            const toast = document.getElementById('toastMsg');
-            toast.innerText = msg;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            const t = document.getElementById('toastMsg');
+            t.innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
         }
+
+        // Inicializar
+        renderProducts();
     </script>
 </body>
 </html>
