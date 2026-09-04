@@ -46,7 +46,7 @@
 
         .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 4% 4%; max-width: 1500px; margin: 0 auto; }
         .cat-card { position: relative; height: 400px; overflow: hidden; cursor: pointer; background: #e5e5df; }
-        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
         .cat-card:hover img { transform: scale(1.04); }
         .cat-title { position: absolute; bottom: 30px; left: 30px; background: #fff; padding: 0.6rem 1.5rem; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
@@ -57,18 +57,18 @@
         .catalog-container { max-width: 1500px; margin: 0 auto; padding: 0 4% 6rem 4%; }
         .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         
-        .product-card { cursor: pointer; }
-        .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: #ecece6; overflow: hidden; margin-bottom: 0.8rem; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .product-card { cursor: pointer; display: flex; flex-direction: column; }
+        .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: #ecece6; overflow: hidden; margin-bottom: 0.8rem; border-radius: 4px; display: block; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
         .product-card:hover .product-img { transform: scale(1.03); }
         
         .product-badge { position: absolute; top: 12px; left: 12px; font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: #fff; padding: 3px 8px; z-index: 2; }
         .product-badge.sale { background: var(--sale); color: #fff; }
 
-        .product-details { display: flex; justify-content: space-between; align-items: flex-start; }
+        .product-details { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 0.2rem; }
         .product-title { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
         .product-category { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
-        .product-price { font-size: 0.85rem; font-weight: 600; }
+        .product-price { font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
         .product-price.old { text-decoration: line-through; color: var(--text-muted); margin-right: 6px; font-weight: 400; }
         .product-price.sale { color: var(--sale); }
 
@@ -76,7 +76,7 @@
         .modal-overlay.open { display: flex; }
         .modal-card { background: #fff; width: 100%; max-width: 900px; display: grid; grid-template-columns: 1.1fr 0.9fr; position: relative; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; background: #eee; }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; background: #eee; display: block; }
         .modal-content { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
         .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.2rem; cursor: pointer; z-index: 10; }
 
@@ -143,21 +143,21 @@
                 <button class="btn-editorial" onclick="window.scrollTo({top: 650, behavior: 'smooth'})">Descubrir Editorial</button>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Editorial" class="hero-image">
+                <img src="https://picsum.photos/seed/editorialhero/1200/800" alt="Editorial" class="hero-image">
             </div>
         </div>
 
         <div class="categories-grid">
             <div class="cat-card" onclick="filterCategory('ropa')">
-                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80" alt="Confección">
+                <img src="https://picsum.photos/seed/catknitwear/800/800" alt="Confección">
                 <div class="cat-title">Confección & Punto</div>
             </div>
             <div class="cat-card" onclick="filterCategory('zapatos')">
-                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80" alt="Calzado">
+                <img src="https://picsum.photos/seed/catshoes/800/800" alt="Calzado">
                 <div class="cat-title">Calzado de Autor</div>
             </div>
             <div class="cat-card" onclick="filterCategory('ofertas')">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Ofertas">
+                <img src="https://picsum.photos/seed/catoffers/800/800" alt="Ofertas">
                 <div class="cat-title">Special Prices</div>
             </div>
         </div>
@@ -295,14 +295,14 @@
 
     <script>
         const products = [
-            { id: 1, title: "Blazer Oversize Lino", category: "ropa", type: "ropa", price: 89, oldPrice: null, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", desc: "Blazer estructurada confeccionada en 100% lino orgánico europeo. Solapas de muesca y bolsillos de vivo." },
-            { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
-            { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
-            { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
-            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
-            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
-            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
-            { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
+            { id: 1, title: "Blazer Oversize Lino", category: "ropa", type: "ropa", price: 89, oldPrice: null, img: "https://picsum.photos/seed/productblazer/800/1000", desc: "Blazer estructurada confeccionada en 100% lino orgánico europeo. Solapas de muesca y bolsillos de vivo." },
+            { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://picsum.photos/seed/producttrench/800/1000", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
+            { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://picsum.photos/seed/productdress/800/1000", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
+            { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://picsum.photos/seed/productboots/800/1000", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
+            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://picsum.photos/seed/productloafers/800/1000", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
+            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://picsum.photos/seed/productsandals/800/1000", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
+            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://picsum.photos/seed/productpants/800/1000", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
+            { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://picsum.photos/seed/productsweater/800/1000", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
         ];
 
         let cart = [];
@@ -334,7 +334,7 @@
                 <div class="product-card" onclick="openModal(${p.id})">
                     <div class="product-img-box">
                         ${p.oldPrice ? '<span class="product-badge sale">Special Price</span>' : (p.id === 1 ? '<span class="product-badge">New</span>' : '')}
-                        <img src="${p.img}" alt="${p.title}" class="product-img">
+                        <img src="${p.img}" alt="${p.title}" class="product-img" loading="lazy">
                     </div>
                     <div class="product-details">
                         <div>
