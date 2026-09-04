@@ -58,11 +58,9 @@
         .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         
         .product-card { cursor: pointer; }
-        .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: var(--bg-alt); overflow: hidden; margin-bottom: 0.8rem; }
-        .product-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease; }
-        .product-img.hover-img { opacity: 0; }
-        .product-card:hover .product-img.main-img { opacity: 0; }
-        .product-card:hover .product-img.hover-img { opacity: 1; }
+        .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: #ecece6; overflow: hidden; margin-bottom: 0.8rem; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .product-card:hover .product-img { transform: scale(1.03); }
         
         .product-badge { position: absolute; top: 12px; left: 12px; font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: #fff; padding: 3px 8px; z-index: 2; }
         .product-badge.sale { background: var(--sale); color: #fff; }
@@ -297,14 +295,14 @@
 
     <script>
         const products = [
-            { id: 1, title: "Blazer Oversize Lino", category: "ropa", type: "ropa", price: 89, oldPrice: null, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", desc: "Blazer estructurada confeccionada en 100% lino orgánico europeo. Solapas de muesca y bolsillos de vivo." },
-            { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
-            { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://images.unsplash.com/photo-1502716119720-b23a93e5fb1b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
-            { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
-            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
-            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
-            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1551803091-e20673f15770?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
-            { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
+            { id: 1, title: "Blazer Oversize Lino", category: "ropa", type: "ropa", price: 89, oldPrice: null, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", desc: "Blazer estructurada confeccionada en 100% lino orgánico europeo. Solapas de muesca y bolsillos de vivo." },
+            { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
+            { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
+            { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
+            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
+            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
+            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
+            { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
         ];
 
         let cart = [];
@@ -336,8 +334,7 @@
                 <div class="product-card" onclick="openModal(${p.id})">
                     <div class="product-img-box">
                         ${p.oldPrice ? '<span class="product-badge sale">Special Price</span>' : (p.id === 1 ? '<span class="product-badge">New</span>' : '')}
-                        <img src="${p.img}" alt="${p.title}" class="product-img main-img">
-                        <img src="${p.hoverImg}" alt="${p.title}" class="product-img hover-img">
+                        <img src="${p.img}" alt="${p.title}" class="product-img">
                     </div>
                     <div class="product-details">
                         <div>
