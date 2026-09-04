@@ -14,7 +14,6 @@
             --text: #111111;
             --text-muted: #666666;
             --accent: #b89774;
-            --accent-dark: #967655;
             --border: #e5e5df;
             --sale-red: #d32f2f;
         }
@@ -33,63 +32,61 @@
         .cart-btn:hover { background: var(--border); }
         .cart-badge { background: var(--accent); color: #fff; width: 20px; height: 20px; border-radius: 50%; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; }
 
-        /* VISTAS (SPA Switcher) */
         .view-section { display: none; }
         .view-section.active { display: block; }
 
-        /* HERO */
-        .hero { height: 85vh; background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80') center/cover; display: flex; align-items: center; padding: 0 10%; position: relative; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+        .hero { height: 75vh; background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80') center/cover; display: flex; align-items: center; padding: 0 10%; position: relative; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.25); }
         .hero-content { position: relative; z-index: 1; color: #fff; max-width: 600px; }
         .hero-tag { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
-        .hero p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
-        .btn { padding: 0.9rem 2.2rem; background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; border-radius: 4px; display: inline-block; transition: background 0.3s, transform 0.2s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.2rem; }
+        .hero p { font-size: 1.05rem; margin-bottom: 2rem; opacity: 0.9; }
+        .btn { padding: 0.8rem 2rem; background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; border-radius: 4px; display: inline-block; transition: background 0.3s, transform 0.2s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
         .btn:hover { background: var(--accent); transform: translateY(-2px); }
         .btn-light { background: #fff; color: var(--text); }
         .btn-light:hover { background: var(--accent); color: #fff; }
 
-        /* SECTIONS */
-        section { padding: 5rem 5%; max-width: 1300px; margin: 0 auto; }
-        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.2rem; font-weight: 700; }
-        .section-header p { color: var(--text-muted); font-size: 0.95rem; }
+        section { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
+        .section-header h2 { font-size: 2rem; font-weight: 700; }
+        .section-header p { color: var(--text-muted); font-size: 0.9rem; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        /* REJILLA MÁS COMPACTA (4 columnas en desktop) */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.8rem; }
         .product-card { background: var(--bg); cursor: pointer; transition: transform 0.3s; }
         .product-card:hover { transform: translateY(-4px); }
-        .product-img-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #eee; border-radius: 8px; margin-bottom: 1rem; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .product-card:hover .product-img { transform: scale(1.05); }
-        .product-tag { position: absolute; top: 12px; left: 12px; background: #fff; padding: 0.3rem 0.8rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; letter-spacing: 0.5px; }
+        .product-img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #f0f0f0; border-radius: 6px; margin-bottom: 0.8rem; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-img { transform: scale(1.04); }
+        .product-tag { position: absolute; top: 10px; left: 10px; background: #fff; padding: 0.25rem 0.6rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; border-radius: 3px; letter-spacing: 0.5px; }
         .product-tag.sale { background: var(--sale-red); color: #fff; }
         
-        .product-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-        .product-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .product-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .product-info p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.6rem; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; }
-        .price-wrap { display: flex; gap: 0.6rem; align-items: center; }
-        .price { font-weight: 700; font-size: 1.05rem; }
-        .price.old { text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; font-weight: 400; }
+        .price-wrap { display: flex; gap: 0.5rem; align-items: center; }
+        .price { font-weight: 700; font-size: 0.95rem; }
+        .price.old { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; font-weight: 400; }
         .price.discount { color: var(--sale-red); }
-        .add-cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .add-cart-btn { background: var(--bg-soft); border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .add-cart-btn:hover { background: var(--text); color: #fff; border-color: var(--text); }
 
-        /* MODAL DE PRODUCTO (Tallas y Colores) */
+        /* MODAL */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 1rem; }
         .modal-overlay.open { display: flex; }
-        .modal-card { background: #fff; border-radius: 12px; max-width: 800px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; animation: scaleUp 0.3s ease; }
+        .modal-card { background: #fff; border-radius: 12px; max-width: 750px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; animation: scaleUp 0.3s ease; }
         @keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
-        .modal-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
-        .close-modal { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; z-index: 10; }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 380px; }
+        .modal-body { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+        .close-modal { position: absolute; top: 12px; right: 15px; background: none; border: none; font-size: 1.4rem; cursor: pointer; z-index: 10; }
         
-        .option-group { margin: 1rem 0; }
-        .option-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
-        .options-row { display: flex; gap: 0.5rem; }
-        .opt-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; }
+        .option-group { margin: 0.8rem 0; }
+        .option-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem; letter-spacing: 0.5px; }
+        .options-row { display: flex; gap: 0.4rem; }
+        .opt-btn { padding: 0.4rem 0.8rem; border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
         .opt-btn.selected { border-color: var(--text); background: var(--text); color: #fff; }
 
-        /* VISTA DE CHECKOUT / CARRITO SEPARADA */
+        /* CHECKOUT */
         .checkout-container { max-width: 900px; margin: 4rem auto; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 3rem; }
         .checkout-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; margin-top: 2rem; }
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
@@ -99,18 +96,15 @@
         .coupon-box { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
         .coupon-box input { flex: 1; padding: 0.7rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; }
 
-        /* BANNER */
-        .banner { background: var(--bg-soft); padding: 5rem 5%; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .banner h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
-        .banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+        .banner { background: var(--bg-soft); padding: 4rem 5%; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .banner h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
 
-        /* FOOTER */
         footer { padding: 4rem 5% 2rem; background: var(--text); color: #fff; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1300px; margin: 0 auto 3rem; }
-        .footer-col h5 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--accent); }
-        .footer-col p, .footer-col a { color: #aaa; font-size: 0.85rem; margin-bottom: 0.8rem; display: block; text-decoration: none; transition: color 0.3s; cursor: pointer; }
-        .footer-col a:hover { color: #fff; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #777; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto 3rem; }
+        .footer-col h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.2rem; color: var(--accent); }
+        .footer-col p, .footer-col a { color: #aaa; font-size: 0.85rem; margin-bottom: 0.7rem; display: block; text-decoration: none; cursor: pointer; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #777; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
 
         .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--text); color: #fff; padding: 1rem 2rem; border-radius: 6px; font-size: 0.85rem; z-index: 9999; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
@@ -130,23 +124,22 @@
         <div class="logo" onclick="switchView('shop')">Velvet & Co.</div>
         <nav>
             <a onclick="switchView('shop')">Colección</a>
-            <a onclick="scrollToSection('seccion-ofertas')">Ofertas ⚡</a>
             <a onclick="scrollToSection('seccion-zapatos')">Zapatos</a>
+            <a onclick="scrollToSection('seccion-ofertas')">Ofertas ⚡</a>
         </nav>
         <div class="header-actions">
             <button class="cart-btn" onclick="switchView('checkout')">
-                🛒 Ver Carrito <span class="cart-badge" id="cartCount">0</span>
+                🛒 Carrito <span class="cart-badge" id="cartCount">0</span>
             </button>
         </div>
     </header>
 
-    <!-- VISTA TIENDA PRINCIPAL -->
     <div id="view-shop" class="view-section active">
         <div class="hero">
             <div class="hero-content">
                 <span class="hero-tag">Colección Otoño / Invierno</span>
                 <h1>Elegancia atemporal para el día a día</h1>
-                <p>Diseños limpios, tejidos naturales y confección artesanal local. Viste con propósito y estilo.</p>
+                <p>Diseños limpios, tejidos naturales y confección artesanal local.</p>
                 <button class="btn btn-light" onclick="scrollToSection('productos')">Explorar Colección</button>
             </div>
         </div>
@@ -155,7 +148,7 @@
             <div class="section-header">
                 <div>
                     <h2>Colección Textil</h2>
-                    <p>Prendas versátiles diseñadas para durar temporada tras temporada.</p>
+                    <p>Prendas versátiles para cualquier ocasión.</p>
                 </div>
             </div>
 
@@ -167,7 +160,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Blazer Oversize Lino</h3>
-                        <p>100% Lino natural orgánico</p>
+                        <p>100% Lino natural</p>
                         <div class="product-footer">
                             <span class="price">89,00 €</span>
                             <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Blazer Oversize Lino', 89, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80', '100% Lino')">Comprar</button>
@@ -182,10 +175,10 @@
                     </div>
                     <div class="product-info">
                         <h3>Gabardina Midi Clásica</h3>
-                        <p>Impermeable efecto melocotón</p>
+                        <p>Impermeable elegante</p>
                         <div class="product-footer">
                             <span class="price">129,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Gabardina clásica')">Comprar</button>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Gabardina Midi Clásica', 129, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80', 'Gabardina')">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -197,17 +190,30 @@
                     </div>
                     <div class="product-info">
                         <h3>Vestido Midi Satinado</h3>
-                        <p>Corte fluido con tirantes finos</p>
+                        <p>Corte fluido elegante</p>
                         <div class="product-footer">
                             <span class="price">75,00 €</span>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Vestido Midi')">Comprar</button>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Vestido Midi Satinado', 75, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', 'Vestido')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openProductModal('Camisa Oxford Algodón', 59, 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80', 'Algodón orgánico respirable')">
+                    <div class="product-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80" alt="Camisa" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Camisa Oxford Algodón</h3>
+                        <p>Algodón orgánico</p>
+                        <div class="product-footer">
+                            <span class="price">59,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Camisa Oxford Algodón', 59, 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&q=80', 'Camisa')">Comprar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN DE ZAPATOS -->
         <section id="seccion-zapatos" style="background: var(--bg-soft);">
             <div class="section-header">
                 <div>
@@ -238,30 +244,43 @@
                     </div>
                     <div class="product-info">
                         <h3>Mocasines Minimalistas</h3>
-                        <p>Acabado brillo con suela track</p>
+                        <p>Acabado brillo</p>
                         <div class="product-footer">
                             <span class="price">85,00 €</span>
                             <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Mocasines Minimalistas', 85, 'https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=600&q=80', 'Mocasines')">Comprar</button>
                         </div>
                     </div>
                 </div>
+
+                <div class="product-card" onclick="openProductModal('Sandalias Tiras Piel', 65, 'https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80', 'Diseño minimalista para verano')">
+                    <div class="product-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80" alt="Sandalias" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sandalias Tiras Piel</h3>
+                        <p>Diseño minimalista</p>
+                        <div class="product-footer">
+                            <span class="price">65,00 €</span>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Sandalias Tiras Piel', 65, 'https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=600&q=80', 'Sandalias')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SECCIÓN DE OFERTAS / REBAJAS -->
         <section id="seccion-ofertas">
             <div class="section-header">
                 <div>
                     <h2>Ofertas Especiales ⚡</h2>
-                    <p>Descuentos exclusivos por tiempo limitado en piezas seleccionadas.</p>
+                    <p>Descuentos exclusivos por tiempo limitado.</p>
                 </div>
             </div>
 
             <div class="products-grid">
-                <div class="product-card" onclick="openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80', 'Rebajas de temporada - Antes 65€')">
+                <div class="product-card" onclick="openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80', 'Rebajas de temporada - Antes 65€')">
                     <div class="product-img-wrap">
                         <span class="product-tag sale">-30%</span>
-                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80" alt="Pantalón" class="product-img">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80" alt="Pantalón" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3>Pantalón Tailored Pinzas</h3>
@@ -271,15 +290,15 @@
                                 <span class="price discount">45,00 €</span>
                                 <span class="price old">65,00 €</span>
                             </div>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80', 'Pantalón Rebajado')">Comprar</button>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Pantalón Tailored Pinzas', 45, 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&q=80', 'Pantalón')">Comprar</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" onclick="openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', 'Mezcla de lana y cashmere - Antes 90€')">
+                <div class="product-card" onclick="openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80', 'Mezcla de lana y cashmere - Antes 90€')">
                     <div class="product-img-wrap">
                         <span class="product-tag sale">-40%</span>
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="Jersey" class="product-img">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80" alt="Jersey" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3>Jersey Punto Cashmere</h3>
@@ -289,7 +308,7 @@
                                 <span class="price discount">55,00 €</span>
                                 <span class="price old">90,00 €</span>
                             </div>
-                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80', 'Jersey Cashmere')">Comprar</button>
+                            <button class="add-cart-btn" onclick="event.stopPropagation(); openProductModal('Jersey Punto Cashmere', 55, 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80', 'Jersey')">Comprar</button>
                         </div>
                     </div>
                 </div>
@@ -303,7 +322,6 @@
         </div>
     </div>
 
-    <!-- VISTA DE CHECKOUT / CARRITO APARTE -->
     <div id="view-checkout" class="view-section">
         <div class="checkout-container">
             <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">Tu Cesta de Compra</h2>
@@ -351,7 +369,6 @@
         </div>
     </div>
 
-    <!-- MODAL DE SELECCIÓN DE PRODUCTO -->
     <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModalDirect()">×</button>
@@ -359,8 +376,8 @@
             <div class="modal-body">
                 <div>
                     <span id="modalCategory" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700;">Moda Velvet</span>
-                    <h2 id="modalTitle" style="font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0 1rem 0;">Título Producto</h2>
-                    <p id="modalDesc" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;"></p>
+                    <h2 id="modalTitle" style="font-size: 1.6rem; font-weight: 700; margin: 0.4rem 0 0.8rem 0;">Título Producto</h2>
+                    <p id="modalDesc" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;"></p>
                     
                     <div class="option-group">
                         <label>Selecciona Color:</label>
@@ -382,8 +399,8 @@
                     </div>
                 </div>
 
-                <div style="border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
-                    <span id="modalPrice" style="font-size: 1.5rem; font-weight: 700;">0,00 €</span>
+                <div style="border-top: 1px solid var(--border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                    <span id="modalPrice" style="font-size: 1.3rem; font-weight: 700;">0,00 €</span>
                     <button class="btn" onclick="confirmAddToCart()">Añadir a la Cesta</button>
                 </div>
             </div>
