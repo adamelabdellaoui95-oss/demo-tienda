@@ -46,9 +46,9 @@
         .btn-editorial { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.3s; text-align: center; }
         .btn-editorial:hover { opacity: 0.85; }
 
-        /* SECCIÓN CATEGORÍAS VISUALES (TIPO ZARA) */
+        /* CATEGORÍAS VISUALES */
         .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 4% 4%; max-width: 1500px; margin: 0 auto; }
-        .cat-card { position: relative; height: 400px; overflow: hidden; cursor: pointer; }
+        .cat-card { position: relative; height: 400px; overflow: hidden; cursor: pointer; background: #eee; }
         .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .cat-card:hover img { transform: scale(1.04); }
         .cat-title { position: absolute; bottom: 30px; left: 30px; background: #fff; padding: 0.6rem 1.5rem; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
@@ -84,7 +84,7 @@
         .modal-overlay.open { display: flex; }
         .modal-card { background: #fff; width: 100%; max-width: 900px; display: grid; grid-template-columns: 1.1fr 0.9fr; position: relative; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; }
+        .modal-img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; background: #eee; }
         .modal-content { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
         .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.2rem; cursor: pointer; z-index: 10; }
 
@@ -169,7 +169,7 @@
                 <div class="cat-title">Calzado de Autor</div>
             </div>
             <div class="cat-card" onclick="filterCategory('ofertas')">
-                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80" alt="Ofertas">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Ofertas">
                 <div class="cat-title">Special Prices</div>
             </div>
         </div>
@@ -313,9 +313,9 @@
             { id: 2, title: "Gabardina Midi Técnica", category: "ropa", type: "ropa", price: 129, oldPrice: null, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", desc: "Gabardina fluida con cuello subido, trabillas en los hombros y cinturón ajustable con hebilla." },
             { id: 3, title: "Vestido Satinado Fluido", category: "ropa", type: "ropa", price: 75, oldPrice: null, img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80", desc: "Vestido midi de tejido satinado con tirantes finos cruzados en la espalda y caída impecable." },
             { id: 4, title: "Botines Piel Chelsea", category: "zapatos", type: "zapatos", price: 110, oldPrice: null, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Botines de piel vacuno con paneles elásticos laterales y suela track ligera de alta resistencia." },
-            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
-            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
-            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
+            { id: 5, title: "Mocasines Minimalistas", category: "zapatos", type: "zapatos", price: 85, oldPrice: null, img: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80", desc: "Mocasín de piel con acabado brillo y detalle de costuras frontales hechas a mano." },
+            { id: 6, title: "Sandalias Tiras Piel", category: "zapatos", type: "zapatos", price: 65, oldPrice: null, img: "https://images.unsplash.com/photo-1562273138-f46be4eb1df3?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?w=800&q=80", desc: "Sandalias planas de diseño minimalista con tiras finas de napa suave." },
+            { id: 7, title: "Pantalón Tailored Pinzas", category: "ofertas", type: "ropa", price: 45, oldPrice: 65, img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80", desc: "Pantalón de talle alto con pinzas delanteras marcadas y pernera recta. Precio especial rebajado." },
             { id: 8, title: "Jersey Cashmere Premium", category: "ofertas", type: "ropa", price: 55, oldPrice: 90, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80", hoverImg: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80", desc: "Jersey de punto fino con mezcla de lana virgen y cashmere. Cuello redondo y tacto ultrasuave." }
         ];
 
