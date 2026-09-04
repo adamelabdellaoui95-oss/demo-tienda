@@ -10,17 +10,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #ffffff;
-            --bg-alt: #f4f4f2;
-            --text: #1a1a1a;
-            --text-muted: #767676;
-            --border: #e0e0e0;
+            --bg-alt: #f7f7f5;
+            --text: #111111;
+            --text-muted: #666666;
+            --border: #e2e2df;
             --accent: #111111;
-            --sale: #c94a4a;
+            --sale: #b33939;
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
 
-        /* HEADER ESTILO ZARA */
+        /* HEADER */
         header { position: sticky; top: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1.2rem 4%; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.4rem; font-weight: 600; letter-spacing: 4px; text-decoration: none; color: var(--text); text-transform: uppercase; cursor: pointer; }
         
@@ -31,14 +31,13 @@
         .header-right { display: flex; align-items: center; gap: 1.5rem; }
         .search-box { display: flex; align-items: center; border-bottom: 1px solid var(--text); padding-bottom: 2px; gap: 0.5rem; }
         .search-box input { border: none; outline: none; font-family: inherit; font-size: 0.8rem; width: 120px; background: transparent; }
-        
         .cart-trigger { background: none; border: none; font-family: inherit; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; }
 
         .view-section { display: none; }
         .view-section.active { display: block; }
 
         /* HERO EDITORIAL */
-        .hero-editorial { height: 85vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; background: var(--bg-alt); }
+        .hero-editorial { height: 80vh; display: grid; grid-template-columns: 1fr 1fr; background: var(--bg-alt); }
         .hero-image { width: 100%; height: 100%; object-fit: cover; }
         .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 0 8%; }
         .hero-text span { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
@@ -47,18 +46,25 @@
         .btn-editorial { display: inline-block; padding: 0.9rem 2.5rem; background: var(--accent); color: #fff; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.3s; text-align: center; }
         .btn-editorial:hover { opacity: 0.85; }
 
-        /* FILTROS DE CATEGORÍA */
-        .filter-bar { display: flex; justify-content: center; gap: 2rem; padding: 2.5rem 4%; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+        /* SECCIÓN CATEGORÍAS VISUALES (TIPO ZARA) */
+        .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 4% 4%; max-width: 1500px; margin: 0 auto; }
+        .cat-card { position: relative; height: 400px; overflow: hidden; cursor: pointer; }
+        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .cat-card:hover img { transform: scale(1.04); }
+        .cat-title { position: absolute; bottom: 30px; left: 30px; background: #fff; padding: 0.6rem 1.5rem; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+        /* FILTROS */
+        .filter-bar { display: flex; justify-content: center; gap: 2rem; padding: 2rem 4%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 2rem 0 3rem 0; }
         .filter-btn { background: none; border: none; font-family: inherit; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: color 0.3s; font-weight: 500; }
         .filter-btn.active, .filter-btn:hover { color: var(--text); font-weight: 600; }
 
-        /* CATALOGO DE PRODUCTOS (GRID TIPO ZARA) */
+        /* CATALOGO */
         .catalog-container { max-width: 1500px; margin: 0 auto; padding: 0 4% 6rem 4%; }
         .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         
-        .product-card { cursor: pointer; group: true; }
+        .product-card { cursor: pointer; }
         .product-img-box { position: relative; width: 100%; aspect-ratio: 3/4; background: var(--bg-alt); overflow: hidden; margin-bottom: 0.8rem; }
-        .product-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; }
+        .product-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease; }
         .product-img.hover-img { opacity: 0; }
         .product-card:hover .product-img.main-img { opacity: 0; }
         .product-card:hover .product-img.hover-img { opacity: 1; }
@@ -73,7 +79,7 @@
         .product-price.old { text-decoration: line-through; color: var(--text-muted); margin-right: 6px; font-weight: 400; }
         .product-price.sale { color: var(--sale); }
 
-        /* MODAL DE PRODUCTO PREMIUM */
+        /* MODAL */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 2rem; }
         .modal-overlay.open { display: flex; }
         .modal-card { background: #fff; width: 100%; max-width: 900px; display: grid; grid-template-columns: 1.1fr 0.9fr; position: relative; animation: fadeIn 0.3s ease; }
@@ -88,7 +94,7 @@
         .opt-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); background: #fff; font-family: inherit; font-size: 0.75rem; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
         .opt-btn.selected { border-color: var(--accent); background: var(--accent); color: #fff; }
 
-        /* VISTA CHECKOUT / CARRITO */
+        /* CHECKOUT */
         .checkout-view { max-width: 1000px; margin: 4rem auto; padding: 0 4%; }
         .checkout-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; margin-top: 2rem; }
         .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
@@ -98,7 +104,7 @@
         .coupon-input-group { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
         .coupon-input-group input { flex: 1; padding: 0.7rem; border: 1px solid var(--border); outline: none; font-family: inherit; font-size: 0.8rem; }
 
-        /* FOOTER EDITORIAL */
+        /* FOOTER */
         footer { border-top: 1px solid var(--border); padding: 5rem 4% 2rem; background: var(--bg); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1500px; margin: 0 auto 4rem; }
         .footer-col h5 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600; }
@@ -111,8 +117,9 @@
 
         @media (max-width: 900px) {
             nav { display: none; }
-            .hero-editorial, .products-grid, .modal-card, .checkout-grid, .footer-grid { grid-template-columns: 1fr; }
+            .hero-editorial, .categories-grid, .products-grid, .modal-card, .checkout-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero-editorial { height: auto; padding: 4rem 0; }
+            .cat-card { height: 300px; }
         }
     </style>
 </head>
@@ -144,10 +151,26 @@
                 <span>Nueva Colección 2026</span>
                 <h1>Elegancia Estructural</h1>
                 <p>Siluetas depuradas, tejidos nobles y una paleta cromática inspirada en la arquitectura moderna.</p>
-                <button class="btn-editorial" onclick="window.scrollTo({top: 600, behavior: 'smooth'})">Descubrir Editorial</button>
+                <button class="btn-editorial" onclick="window.scrollTo({top: 650, behavior: 'smooth'})">Descubrir Editorial</button>
             </div>
             <div>
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Editorial" class="hero-image">
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE CATEGORÍAS VISUALES -->
+        <div class="categories-grid">
+            <div class="cat-card" onclick="filterCategory('ropa')">
+                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80" alt="Confección">
+                <div class="cat-title">Confección & Punto</div>
+            </div>
+            <div class="cat-card" onclick="filterCategory('zapatos')">
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80" alt="Calzado">
+                <div class="cat-title">Calzado de Autor</div>
+            </div>
+            <div class="cat-card" onclick="filterCategory('ofertas')">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&q=80" alt="Ofertas">
+                <div class="cat-title">Special Prices</div>
             </div>
         </div>
 
@@ -159,9 +182,7 @@
         </div>
 
         <div class="catalog-container">
-            <div class="products-grid" id="productsGrid">
-                <!-- Inyectado por JS -->
-            </div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
 
         <div style="background: var(--bg-alt); padding: 5rem 4%; text-align: center; border-top: 1px solid var(--border);">
@@ -171,7 +192,7 @@
         </div>
     </div>
 
-    <!-- VISTA CHECKOUT / BOLSA -->
+    <!-- VISTA CHECKOUT -->
     <div id="view-checkout" class="view-section">
         <div class="checkout-view">
             <h2 style="font-size: 1.8rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 0.5rem;">Cesta de la Compra</h2>
@@ -218,7 +239,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE PRODUCTO -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModalDirect()">✕</button>
@@ -354,6 +375,7 @@
             if(cat === 'ofertas') document.getElementById('nav-ofertas').classList.add('active');
 
             renderProducts(cat, document.getElementById('searchInput').value);
+            window.scrollTo({top: 850, behavior: 'smooth'});
         }
 
         function searchProducts(query) {
@@ -487,7 +509,6 @@
             setTimeout(() => t.classList.remove('show'), 2500);
         }
 
-        // Inicializar
         renderProducts();
     </script>
 </body>
