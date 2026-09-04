@@ -2022,7 +2022,7 @@ ul { list-style: none; }
 <script>
 /* ============================================
    DATA: PRODUCTOS
-   URLs de Unsplash estables + fallback picsum
+   URLs corregidas para que coincidan con el producto
 ============================================ */
 const PRODUCTS = [
   { id:1, name:"Abrigo de lana oversize", cat:"Mujer", price:149, oldPrice:null, colors:["Beige","Negro","Marrón"], sizes:["XS","S","M","L","XL"], tag:"Nuevo",
@@ -2032,7 +2032,7 @@ const PRODUCTS = [
     img:["https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80","https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80"],
     desc:"Vestido midi de satén fluido con tirantes ajustables y corte al bies. Elegante y versátil, perfecto para ocasiones especiales o para elevar un look cotidiano." },
   { id:3, name:"Camisa blanca de popelín", cat:"Mujer", price:49, oldPrice:null, colors:["Blanco","Azul"], sizes:["XS","S","M","L","XL"], tag:null,
-    img:["https://images.unsplash.com/photo-1598554747436-c9293d6a0b8e?w=600&q=80","https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80"],
+    img:["https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80","https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80"],
     desc:"Camisa de popelín de algodón orgánico con corte clásico. Cuello camisero, puños ajustables y botones de nácar. Un básico imprescindible." },
   { id:4, name:"Jersey de cashmere", cat:"Mujer", price:119, oldPrice:null, colors:["Beige","Gris","Negro"], sizes:["S","M","L"], tag:"Nuevo",
     img:["https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80","https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80"],
@@ -2092,7 +2092,7 @@ const PRODUCTS = [
     img:["https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80","https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"],
     desc:"Pendientes de plata 925 con baño de rodio. Diseño minimalista tipo aro pequeño. Cierre de presión seguro. Hipoalergénicos." },
   { id:23, name:"Abrigo acolchado ligero", cat:"Niños", price:55, oldPrice:null, colors:["Negro","Azul","Verde"], sizes:["XS","S","M","L"], tag:null,
-    img:["https://images.unsplash.com/photo-1515523376722-6fc8e0ed45f0?w=600&q=80","https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=600&q=80"],
+    img:["https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=80","https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&q=80"],
     desc:"Abrigo acolchado ligero con relleno térmico para niño. Capucha desmontable, cierre con cremallera y bolsillos laterales. Impermeable." },
   { id:24, name:"Falda plisada midi", cat:"Mujer", price:69, oldPrice:null, colors:["Negro","Beige","Verde"], sizes:["XS","S","M","L"], tag:"Nuevo",
     img:["https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80","https://images.unsplash.com/photo-1577900232427-18219b9166a0?w=600&q=80"],
